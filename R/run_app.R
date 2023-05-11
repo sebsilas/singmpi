@@ -1,6 +1,14 @@
 
 
 
+#' Run the app
+#'
+#' @param app_name
+#'
+#' @return
+#' @export
+#'
+#' @examples
 run_app <- function(app_name = "sing-mpi") {
 
   SAA::SAA_standalone(app_name = app_name,
