@@ -43,7 +43,9 @@ extra_mpi <- function() {
 
     # Sing your favourite song
     musicassessr::record_audio_page(page_title = "Sing your favourite song!",
-                                    page_text = 'When you are ready, click "Record" and sing your favourite song.')
+                                    page_text = 'When you are ready, click "Record" and sing your favourite song.',
+                                    page_label = "sing_fav",
+                                    get_answer = musicassessr::get_answer_pyin)
 
   )
 
