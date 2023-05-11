@@ -1,0 +1,7 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+test_apps
+www
+node
+output
+.Renviron

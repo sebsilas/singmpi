@@ -1,0 +1,14 @@
+
+default:
+  musicassessr_aws: FALSE
+  no_melodies: 2
+  no_long_tones: 2
+  no_examples: 0
+  skip_setup: TRUE
+
+production:
+  musicassessr_aws: TRUE
+  no_melodies: 10
+  no_long_notes: 6
+  no_examples: 2
+  skip_setup: FALSE
