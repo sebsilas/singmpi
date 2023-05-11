@@ -27,7 +27,7 @@ run_app <- function(app_name = "sing-mpi") {
                  demographics = FALSE,
                  default_range = list(bottom_range = 48, top_range = 60),
                  long_tone_paradigm = "call_and_response",
-                 append_trial_block_before = extra_mpi()
+                 append_trial_block_after = extra_mpi()
                  )
 
 }

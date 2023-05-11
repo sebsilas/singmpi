@@ -8,7 +8,7 @@ default:
 
 production:
   musicassessr_aws: TRUE
-  no_melodies: 10
+  no_melodies: 2
   no_long_notes: 6
   no_examples: 2
   skip_setup: FALSE

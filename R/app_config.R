@@ -25,7 +25,7 @@ app_version <- function() {
 #' @param config R_CONFIG_ACTIVE value.
 #' @param use_parent Logical, scan the parent directory for config file.
 #'
-#' @noRd
+#' @export
 get_config <- function(
     value,
     config = Sys.getenv("R_CONFIG_ACTIVE", "default"),
