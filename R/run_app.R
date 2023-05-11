@@ -5,10 +5,9 @@
 #'
 #' @param app_name
 #'
-#' @return
+#' @return Launchs a shiny test.
 #' @export
 #'
-#' @examples
 run_app <- function(app_name = "sing-mpi") {
 
   SAA::SAA_standalone(app_name = app_name,
@@ -28,7 +27,7 @@ run_app <- function(app_name = "sing-mpi") {
                  demographics = FALSE,
                  default_range = list(bottom_range = 48, top_range = 60),
                  long_tone_paradigm = "call_and_response",
-                 append_trial_block_after = extra_mpi()
+                 append_trial_block_before = extra_mpi()
                  )
 
 }
@@ -53,23 +52,29 @@ extra_mpi <- function() {
 
 
 sing_brother_john_page <- function() {
+
   musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(brother_john$abs_melody),
                                 durations = itembankr::str_mel_to_vector(brother_john$durations),
                                 page_title = "Sing the song!",
                                 page_text = 'When you are ready, click "Record" and sing back the song you hear.',
                                 stimuli_type = "midi_notes",
                                 display_modality = "auditory",
-                                page_type = "record_audio_page")
+                                page_type = "record_audio_page",
+                                page_label = "sing_bj",
+                                get_answer = musicassessr::get_answer_pyin)
 }
 
 sing_hbd_page <- function() {
+
   musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(hbd$abs_melody),
                                 durations = itembankr::str_mel_to_vector(hbd$durations),
                                 page_title = "Sing Happy Birthday!",
                                 page_text = 'When you are ready, click "Record" and sing back Happy Birthday after you hear it.',
                                 stimuli_type = "midi_notes",
                                 display_modality = "auditory",
-                                page_type = "record_audio_page")
+                                page_type = "record_audio_page",
+                                page_label = "sing_hbd",
+                                get_answer = musicassessr::get_answer_pyin)
 }
 
 

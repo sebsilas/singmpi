@@ -9,6 +9,9 @@ run_app(app_name = "sing-mpi")
 \arguments{
 \item{app_name}{}
 }
+\value{
+Launchs a shiny test.
+}
 \description{
 Run the app
 }
