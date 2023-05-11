@@ -15,7 +15,8 @@ Imports:
 Remotes: 
     sebsilas/SAA
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10).
+    psych
 RoxygenNote: 7.2.3
 URL: https://github.com/sebsilas/singmpi
 BugReports: https://github.com/sebsilas/singmpi/issues
