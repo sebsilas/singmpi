@@ -67,6 +67,31 @@ Berkowitz_easy <- Berkowitz::ngram_item_bank %>%
 ```
 
 
+```{r}
+
+Berkowitz::ngram_item_bank %>% 
+  tibble::as_tibble() %>% 
+  pull(arrhythmic_difficulty) %>% 
+  hist()
+
+Berkowitz::ngram_item_bank %>% 
+  tibble::as_tibble() %>% 
+  pull(arrhythmic_difficulty_percentile) %>% 
+  hist()
+
+Berkowitz::ngram_item_bank %>% 
+  tibble::as_tibble() %>% 
+  pull(arrhythmic_difficulty_percentile) %>% 
+  log() %>% 
+  scales::rescale() %>% 
+  hist()
+
+
+
+
+```
+
+
 
 ```{r}
 

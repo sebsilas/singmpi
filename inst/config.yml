@@ -1,18 +1,15 @@
 
 default:
-  musicassessr_aws: FALSE
   no_melodies: 2
   no_long_tones: 2
   no_examples: 0
 
 prod:
-  musicassessr_aws: TRUE
   no_melodies: 10
   no_long_tones: 6
   no_examples: 2
 
 prod_quick:
-  musicassessr_aws: TRUE
   no_melodies: 2
   no_long_tones: 2
   no_examples: 0
