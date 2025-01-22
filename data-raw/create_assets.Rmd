@@ -45,7 +45,13 @@ itembankr::create_item_bank(name = "hbd",
                             output = "item",
                             scale_durations_to_have_min_abs_value_of_x_seconds = NA)
 
+
 file.remove('hbd_file.rda')
+
+```
+
+
+```{r}
 
 load('hbd_item.rda')
 
@@ -58,9 +64,10 @@ rm(item_item_bank)
 
 ```{r}
 
-Berkowitz_easy <- Berkowitz::ngram_item_bank %>% 
+Berkowitz_easy <- Berkowitz::Berkowitz_subset %>% 
   tibble::as_tibble() %>% 
-  filter(arrhythmic_difficulty_percentile < 5) %>% 
+  filter(arrhythmic_difficulty_percentile < 5, 
+         rhythmic_difficulty_percentile < 5) %>% 
   itembankr::set_item_bank_class()
 
 
@@ -69,25 +76,15 @@ Berkowitz_easy <- Berkowitz::ngram_item_bank %>%
 
 ```{r}
 
-Berkowitz::ngram_item_bank %>% 
-  tibble::as_tibble() %>% 
-  pull(arrhythmic_difficulty) %>% 
-  hist()
+Berkowitz_easy_arrhythmic <- Berkowitz_easy %>%
+  dplyr::as_tibble() %>%
+  dplyr::filter(!rhythmic)  %>%
+  itembankr::set_item_bank_class()
 
-Berkowitz::ngram_item_bank %>% 
-  tibble::as_tibble() %>% 
-  pull(arrhythmic_difficulty_percentile) %>% 
-  hist()
-
-Berkowitz::ngram_item_bank %>% 
-  tibble::as_tibble() %>% 
-  pull(arrhythmic_difficulty_percentile) %>% 
-  log() %>% 
-  scales::rescale() %>% 
-  hist()
-
-
-
+Berkowitz_easy_rhythmic <-  Berkowitz_easy %>%
+  dplyr::as_tibble() %>%
+  dplyr::filter(rhythmic) %>%
+  itembankr::set_item_bank_class()
 
 ```
 
@@ -95,7 +92,13 @@ Berkowitz::ngram_item_bank %>%
 
 ```{r}
 
-use_data(Berkowitz_easy, brother_john, hbd, all_meine_entchen, internal = TRUE, overwrite = TRUE, compress = "xz")
+use_data(Berkowitz_easy_arrhythmic,
+         Berkowitz_easy_rhythmic,
+         brother_john, 
+         hbd, 
+         all_meine_entchen, 
+         internal = TRUE, overwrite = TRUE, compress = "xz")
 
 
 ```
+
