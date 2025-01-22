@@ -37,7 +37,8 @@ run_app <- function(app_name = "sing-mpi") {
                        append_trial_block_before = extra_mpi_beginning(),
                        append_trial_block_after = extra_mpi_end(),
                        long_tone_length = 3,
-                       allow_SNR_failure = TRUE)
+                       allow_SNR_failure = TRUE,
+                       use_presigned_url = FALSE)
 
 }
 
