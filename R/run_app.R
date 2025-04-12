@@ -89,7 +89,7 @@ sing_fav_song_page <- function(page_label = "sing_fav") {
     db_vars$phase <- "test"
     db_vars$feedback <- FALSE
     db_vars$test_id <- 1L
-    session_id <- psychTestR::get_global("session_id", state) %>% get_promise_value()
+    session_id <- psychTestR::get_global("session_id", state) %>% musicassessr::get_promise_value()
     db_vars$session_id <- session_id
     db_vars$instrument <- "Voice"
     db_vars$module <- psychTestR::get_local(".module", state)
@@ -126,7 +126,7 @@ sing_brother_john_pages <- function(trigger_start_of_stimulus_fun,
         db_vars$phase <- "test"
         db_vars$feedback <- FALSE
         db_vars$test_id <- 1L
-        session_id <- psychTestR::get_global("session_id", state) %>% get_promise_value()
+        session_id <- psychTestR::get_global("session_id", state) %>% musicassessr::get_promise_value()
         db_vars$session_id <- session_id
         db_vars$instrument <- "Voice"
         db_vars$module <- psychTestR::get_local(".module", state)
@@ -165,7 +165,7 @@ sing_hbd_page <- function(trigger_start_of_stimulus_fun,
     db_vars$phase <- "test"
     db_vars$feedback <- FALSE
     db_vars$test_id <- 1L
-    session_id <- psychTestR::get_global("session_id", state) %>% get_promise_value()
+    session_id <- psychTestR::get_global("session_id", state) %>% musicassessr::get_promise_value()
     db_vars$session_id <- session_id
     db_vars$instrument <- "Voice"
     db_vars$module <- psychTestR::get_local(".module", state)
@@ -203,7 +203,7 @@ sing_all_meine_entchen_page <- function(trigger_start_of_stimulus_fun,
     db_vars$phase <- "test"
     db_vars$feedback <- FALSE
     db_vars$test_id <- 1L
-    session_id <- psychTestR::get_global("session_id", state) %>% get_promise_value()
+    session_id <- psychTestR::get_global("session_id", state) %>% musicassessr::get_promise_value()
     db_vars$session_id <- session_id
     db_vars$instrument <- "Voice"
     db_vars$module <- psychTestR::get_local(".module", state)
