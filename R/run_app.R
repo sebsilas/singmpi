@@ -72,14 +72,15 @@ extra_mpi_end <- function(trigger_start_of_stimulus_fun, trigger_end_of_stimulus
 
     sing_brother_john_pages(trigger_start_of_stimulus_fun, trigger_end_of_stimulus_fun, asynchronous_api_mode),
 
-    sing_fav_song_page()
+    sing_fav_song_page(asynchronous_api_mode = asynchronous_api_mode)
 
   )
 
 }
 
 
-sing_fav_song_page <- function(page_label = "sing_fav") {
+sing_fav_song_page <- function(page_label = "sing_fav",
+                               asynchronous_api_mode = TRUE) {
 
   psychTestR::reactive_page(function(state, ...) {
 
@@ -102,6 +103,8 @@ sing_fav_song_page <- function(page_label = "sing_fav") {
                                     page_text = 'When you are ready, click "Record" and sing your favourite song.',
                                     page_label = page_label,
                                     db_vars = db_vars,
+                                    volume_meter = TRUE,
+                                    volume_meter_type = 'playful',
                                     get_answer = if(asynchronous_api_mode) musicassessr::get_answer_add_trial_and_compute_trial_scores_s3 else musicassessr::get_answer_pyin)
 
 
@@ -142,6 +145,8 @@ sing_brother_john_pages <- function(trigger_start_of_stimulus_fun,
                                       stimuli_type = "midi_notes",
                                       display_modality = "auditory",
                                       page_type = "record_audio_page",
+                                      volume_meter = TRUE,
+                                      volume_meter_type = 'playful',
                                       trigger_start_of_stimulus_fun = trigger_start_of_stimulus_fun,
                                       trigger_end_of_stimulus_fun = trigger_end_of_stimulus_fun,
                                       page_label = page_label,
@@ -180,6 +185,8 @@ sing_hbd_page <- function(trigger_start_of_stimulus_fun,
                                   stimuli_type = "midi_notes",
                                   display_modality = "auditory",
                                   page_type = "record_audio_page",
+                                  volume_meter = TRUE,
+                                  volume_meter_type = 'playful',
                                   trigger_start_of_stimulus_fun = trigger_start_of_stimulus_fun,
                                   trigger_end_of_stimulus_fun = trigger_end_of_stimulus_fun,
                                   page_label = page_label,
@@ -219,6 +226,8 @@ sing_all_meine_entchen_page <- function(trigger_start_of_stimulus_fun,
                                   stimuli_type = "midi_notes",
                                   display_modality = "auditory",
                                   page_type = "record_audio_page",
+                                  volume_meter = TRUE,
+                                  volume_meter_type = 'playful',
                                   page_label = "sing_ducklings",
                                   db_vars = db_vars,
                                   trigger_start_of_stimulus_fun = trigger_start_of_stimulus_fun,
