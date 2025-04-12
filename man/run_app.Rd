@@ -4,10 +4,15 @@
 \alias{run_app}
 \title{Run the app}
 \usage{
-run_app(app_name = "sing-mpi", SNR_test = TRUE)
+run_app(
+  app_name = "sing-mpi",
+  SNR_test = TRUE,
+  asynchronous_api_mode = TRUE,
+  include_extra = TRUE
+)
 }
 \arguments{
-\item{SNR_test}{}
+\item{include_extra}{}
 }
 \value{
 Launchs a shiny test.
