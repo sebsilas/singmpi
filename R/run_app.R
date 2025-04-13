@@ -28,7 +28,6 @@ run_app <- function(app_name = "sing-mpi",
                        rhythmic_item_bank = Berkowitz_easy_rhythmic,
                        feedback = FALSE,
                        get_p_id = TRUE,
-                       max_goes = 2L,
                        user_id = if(Sys.getenv("R_CONFIG_ACTIVE") == "prod") 188L else 1L,
                        num_examples = list(long_tones = get_config('no_examples'),
                                            arrhythmic = get_config('no_examples'),
@@ -61,6 +60,7 @@ run_app <- function(app_name = "sing-mpi",
 
 extra_mpi_beginning <- function(trigger_start_of_stimulus_fun, trigger_end_of_stimulus_fun, asynchronous_api_mode) {
   psychTestR::join(
+    sing_fav_song_page(asynchronous_api_mode = asynchronous_api_mode),
     sing_hbd_page(trigger_start_of_stimulus_fun, trigger_end_of_stimulus_fun, asynchronous_api_mode),
     sing_all_meine_entchen_page(trigger_start_of_stimulus_fun, trigger_end_of_stimulus_fun, asynchronous_api_mode)
   )
@@ -98,12 +98,16 @@ sing_fav_song_page <- function(page_label = "sing_fav",
     db_vars$user_id <- psychTestR::get_global("user_id", state)
     db_vars$display_modality <- "auditory"
     db_vars$item_id <- "CUSTOM_ITEM_NO_SCORING"
-    db_vars$original_item_id <- "NONE"
+    db_vars$additional <- list(original_item_id = "NONE")
+    db_vars$user_id <- if(Sys.getenv("R_CONFIG_ACTIVE") == "prod") 188L else 1L
 
     # Sing your favourite song
     musicassessr::record_audio_page(page_title = "Sing your favourite song!",
-                                    page_text = 'When you are ready, click "Record" and sing your favourite song.',
-                                    page_label = page_label,
+                                    page_text = shiny::tags$div(
+                                      musicassessr::set_melodic_stimuli("NA", "NA"),
+                                      shiny::tags$p('When you are ready, click "Record" and sing your favourite song.')
+                                      ),
+                                    label = page_label,
                                     db_vars = db_vars,
                                     volume_meter = TRUE,
                                     volume_meter_type = 'playful',
@@ -139,7 +143,8 @@ sing_brother_john_pages <- function(trigger_start_of_stimulus_fun,
         db_vars$user_id <- psychTestR::get_global("user_id", state)
         db_vars$display_modality <- "auditory"
         db_vars$item_id <- "CUSTOM_ITEM"
-        db_vars$original_item_id <- "NONE"
+        db_vars$additional <- list(original_item_id = "NONE")
+        db_vars$user_id <- if(Sys.getenv("R_CONFIG_ACTIVE") == "prod") 188L else 1L
 
 
         musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(abs_melody),
@@ -182,7 +187,11 @@ sing_hbd_page <- function(trigger_start_of_stimulus_fun,
     db_vars$user_id <- psychTestR::get_global("user_id", state)
     db_vars$display_modality <- "auditory"
     db_vars$item_id <- "CUSTOM_ITEM"
-    db_vars$original_item_id <- "NONE"
+    db_vars$additional <- list(original_item_id = "NONE")
+    db_vars$user_id <- if(Sys.getenv("R_CONFIG_ACTIVE") == "prod") 188L else 1L
+
+    print('db_vars')
+    print(db_vars)
 
     musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(hbd$abs_melody),
                                   durations = itembankr::str_mel_to_vector(hbd$durations),
@@ -224,7 +233,8 @@ sing_all_meine_entchen_page <- function(trigger_start_of_stimulus_fun,
     db_vars$user_id <- psychTestR::get_global("user_id", state)
     db_vars$display_modality <- "auditory"
     db_vars$item_id <- "CUSTOM_ITEM"
-    db_vars$original_item_id <- "NONE"
+    db_vars$additional <- rjson::toJSON(list(original_item_id = "NONE"))
+    db_vars$user_id <- if(Sys.getenv("R_CONFIG_ACTIVE") == "prod") 188L else 1L
 
 
     musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(all_meine_entchen$abs_melody),

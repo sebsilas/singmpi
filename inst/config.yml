@@ -1,7 +1,7 @@
 
 default:
-  no_melodies: 2
-  no_long_tones: 2
+  no_melodies: 0
+  no_long_tones: 0
   no_examples: 0
 
 prod:
