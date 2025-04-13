@@ -97,6 +97,8 @@ sing_fav_song_page <- function(page_label = "sing_fav",
     db_vars$rhythmic <- TRUE
     db_vars$user_id <- psychTestR::get_global("user_id", state)
     db_vars$display_modality <- "auditory"
+    db_vars$item_id <- "CUSTOM_ITEM_NO_SCORING"
+    db_vars$original_item_id <- "NONE"
 
     # Sing your favourite song
     musicassessr::record_audio_page(page_title = "Sing your favourite song!",
@@ -136,6 +138,8 @@ sing_brother_john_pages <- function(trigger_start_of_stimulus_fun,
         db_vars$rhythmic <- TRUE
         db_vars$user_id <- psychTestR::get_global("user_id", state)
         db_vars$display_modality <- "auditory"
+        db_vars$item_id <- "CUSTOM_ITEM"
+        db_vars$original_item_id <- "NONE"
 
 
         musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(abs_melody),
@@ -177,6 +181,8 @@ sing_hbd_page <- function(trigger_start_of_stimulus_fun,
     db_vars$rhythmic <- TRUE
     db_vars$user_id <- psychTestR::get_global("user_id", state)
     db_vars$display_modality <- "auditory"
+    db_vars$item_id <- "CUSTOM_ITEM"
+    db_vars$original_item_id <- "NONE"
 
     musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(hbd$abs_melody),
                                   durations = itembankr::str_mel_to_vector(hbd$durations),
@@ -217,6 +223,8 @@ sing_all_meine_entchen_page <- function(trigger_start_of_stimulus_fun,
     db_vars$rhythmic <- TRUE
     db_vars$user_id <- psychTestR::get_global("user_id", state)
     db_vars$display_modality <- "auditory"
+    db_vars$item_id <- "CUSTOM_ITEM"
+    db_vars$original_item_id <- "NONE"
 
 
     musicassessr::present_stimuli(stimuli = itembankr::str_mel_to_vector(all_meine_entchen$abs_melody),
