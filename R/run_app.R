@@ -233,7 +233,7 @@ sing_all_meine_entchen_page <- function(trigger_start_of_stimulus_fun,
     db_vars$user_id <- psychTestR::get_global("user_id", state)
     db_vars$display_modality <- "auditory"
     db_vars$item_id <- "CUSTOM_ITEM"
-    db_vars$additional <- rjson::toJSON(list(original_item_id = "NONE"))
+    db_vars$additional <- list(original_item_id = "NONE")
     db_vars$user_id <- if(Sys.getenv("R_CONFIG_ACTIVE") == "prod") 188L else 1L
 
 
