@@ -61,7 +61,6 @@ run_app <- function(app_name = "sing-mpi",
 
 extra_mpi_beginning <- function(trigger_start_of_stimulus_fun, trigger_end_of_stimulus_fun, asynchronous_api_mode) {
   psychTestR::join(
-    sing_fav_song_page(asynchronous_api_mode = asynchronous_api_mode),
     sing_hbd_page(trigger_start_of_stimulus_fun, trigger_end_of_stimulus_fun, asynchronous_api_mode),
     sing_all_meine_entchen_page(trigger_start_of_stimulus_fun, trigger_end_of_stimulus_fun, asynchronous_api_mode)
   )
